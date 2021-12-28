@@ -3,12 +3,19 @@ import { questions } from "./data/questions.js";
 import { Quiz } from "./models/Quiz.js";
 import { UI } from "./models/UI.js";
 
+const renderPage = (quiz, ui) => {
+    ui.showQuestion(quiz.getQuestionIndex().text);
+    ui.showChoices(quiz.getQuestionIndex().choices, (currentChoices) => {quiz.guess(currentChoices)
+    renderPage(quiz, ui)
+    });
+}
+
 function main() {
   const quiz = new Quiz(questions);
   const ui = new UI();
 
-  ui.showQuestion(quiz.getQuestionIndex().text);
-  ui.showChoices(quiz.getQuestionIndex().choices)
+  renderPage(quiz, ui)
+
 }
 
 main();

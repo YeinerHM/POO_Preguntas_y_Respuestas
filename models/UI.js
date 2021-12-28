@@ -18,14 +18,15 @@ export class UI {
      * @param {string} choices  la eleccion de la pregunta
      */
 
-    showChoices(choices, ){
+    showChoices(choices, callback){
         const choicesContainer = document.getElementById("choices")
+        choicesContainer.innerHTML = ""
 
         for (let i = 0; i < choices.length; i++) {
             const button = document.createElement("button")
             button.innerText = choices[i];
             button.className = "button"
-            button.addEventListener("click", () => console.log("clicked"))
+            button.addEventListener("click", () => callback(choices[i]));
 
             choicesContainer.append(button);
         }
