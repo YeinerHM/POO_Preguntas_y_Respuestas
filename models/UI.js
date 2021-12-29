@@ -31,4 +31,28 @@ export class UI {
             choicesContainer.append(button);
         }
     }
+
+    /**
+     * 
+     * @param {number} score el total de puntuacion score
+     */
+    showScores(score) {
+        const quizEndHTML =  `
+        <h1>Result</h1>
+        <h2 id="score">Your scores: ${score}</h2>
+        `;
+        const element = document.getElementById("quiz")
+        element.innerHTML = quizEndHTML;
+
+    }
+
+    /**
+     * 
+     * @param {number} currentIndex  En indice actual es de quiz
+     * @param {number} total el total de las preguntas
+     */
+    showProgress(currentIndex, total) {
+        const element = document.getElementById("progress")
+        element.innerHTML =  `Question ${currentIndex} of ${total}`;
+    }
 }
